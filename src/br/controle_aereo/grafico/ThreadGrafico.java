@@ -1,12 +1,14 @@
-
 package br.controle_aereo.grafico;
-
 
 import br.controle_aereo.janelas.Principal;
 import java.awt.Graphics;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 public final class ThreadGrafico implements Runnable {
@@ -36,7 +38,7 @@ public final class ThreadGrafico implements Runnable {
         graph.drawLine(0, 200, 400, 200);
         graph.drawLine(200, 0, 200, 400);
         Double[] coordenadas = new Double[2];
-/*
+
         while (frame.isAlive()) {
             if (frame.isAcaoExclusao()) {
                 while (!frame.getFilaAcao().isEmpty()) {
@@ -51,7 +53,7 @@ public final class ThreadGrafico implements Runnable {
             graph.drawLine(200, 0, 200, 400);
             for (int i = 0; i < frame.getModel().getRowCount(); i++) {
                 coordenadas = normalizaPontos(Double.parseDouble(frame.getModel().getValueAt(i, 2).toString().replace(",", ".")), Double.parseDouble(frame.getModel().getValueAt(i, 3).toString().replace(",", ".")));
-                inserePonto(coordenadas[0], coordenadas[1],Double.parseDouble(frame.getModel().getValueAt(i, 7).toString().replace(",", ".")));
+                inserePonto(coordenadas[0], coordenadas[1], Double.parseDouble(frame.getModel().getValueAt(i, 7).toString().replace(",", ".")));
             }
 
             try {
@@ -64,7 +66,7 @@ public final class ThreadGrafico implements Runnable {
 
     public void inserePonto(Double x, Double y, double dir) {
 
-        double rotationRequired = Math.toRadians(360-dir);
+        double rotationRequired = Math.toRadians(360 - dir);
         double locationX = img.getWidth() / 2;
         double locationY = img.getHeight() / 2;
         AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
@@ -89,8 +91,4 @@ public final class ThreadGrafico implements Runnable {
         return coordenadas;
     }
 
-}
-        
-        */
-    }
 }
